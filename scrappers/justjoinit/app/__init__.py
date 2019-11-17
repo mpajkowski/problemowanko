@@ -1,1 +1,1 @@
-from .crawler import fetch_offers
+from .crawler import fetch_offers, OfferEncoder

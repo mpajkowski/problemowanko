@@ -1,4 +1,5 @@
 
+import json
 import requests
 from bs4 import BeautifulSoup
 
@@ -11,6 +12,13 @@ class Offer:
     company_logo_url: str
     job_title: str
     salary: str
+
+class OfferEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, Offer):
+            return o.__dict__
+
+        return super().default(self, o)
 
 
 def fetch_offers():
